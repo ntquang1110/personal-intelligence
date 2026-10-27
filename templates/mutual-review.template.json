@@ -1,0 +1,47 @@
+{
+  "schema_version": "2.1",
+  "review_id": "synthetic-review-001",
+  "context": "partner",
+  "purpose": "Synthetic example for mutual-review schema tests.",
+  "participants": [
+    {
+      "participant_id": "person-a",
+      "participated_voluntarily": true,
+      "approved_shared_profile": true
+    },
+    {
+      "participant_id": "person-b",
+      "participated_voluntarily": true,
+      "approved_shared_profile": true
+    }
+  ],
+  "criteria": [
+    {
+      "criterion": "communication during disagreement",
+      "status": "unresolved",
+      "evidence_from_each_side": [
+        "Synthetic person A self-report; no inference about person B."
+      ],
+      "interpretation": "The topic has not yet been discussed together.",
+      "confidence": "low",
+      "questions_to_discuss": [
+        "What helps each person return to a difficult conversation after taking a break?"
+      ]
+    }
+  ],
+  "summary": {
+    "alignments": [],
+    "tensions": [],
+    "unknowns": [
+      "How each person prefers to repair conflict"
+    ],
+    "next_steps": [
+      "Discuss the question voluntarily and update the summary with both perspectives."
+    ]
+  },
+  "limitations": [
+    "Synthetic example only.",
+    "Not a verdict or relationship prediction."
+  ],
+  "human_decision_required": true
+}

@@ -1,0 +1,32 @@
+{
+  "schema_version": "2.1",
+  "profile_owner": "synthetic-person-a",
+  "audience": "potential_partner",
+  "purpose": "Synthetic example for testing the shareable-profile contract.",
+  "created_at": "2026-10-27T09:00:00Z",
+  "review_or_expiry_date": null,
+  "approved_fields": [
+    "values.communication"
+  ],
+  "claims": [
+    {
+      "field_id": "values.communication",
+      "claim": "Prefers discussing disagreements calmly and directly.",
+      "claim_type": "self_report",
+      "evidence_summary": "Synthetic self-description supplied for schema tests.",
+      "source_reference": null,
+      "confidence": "medium",
+      "purpose_relevance": "Relevant to a voluntary discussion about communication expectations.",
+      "approved_for_sharing": true
+    }
+  ],
+  "limitations": [
+    "Synthetic example only; not a real person's profile."
+  ],
+  "consent": {
+    "owner_approved": true,
+    "recipient": "synthetic-review-participant",
+    "onward_sharing": "not_allowed",
+    "withdrawal_note": "Synthetic example; in a real runtime, explain the actual withdrawal process and its limits."
+  }
+}
