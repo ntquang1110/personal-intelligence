@@ -1,0 +1,78 @@
+{
+  "schema_version": "2.2",
+  "assessment_id": "example-only-001",
+  "context": "job",
+  "purpose": "Synthetic example only: compare a candidate and a role against agreed job-related criteria.",
+  "created_at": "2026-10-27T09:00:00Z",
+  "participants": [
+    {
+      "participant_id": "candidate-a",
+      "role_in_context": "candidate",
+      "opted_in": true,
+      "approved_profile_ref": "synthetic-candidate-profile",
+      "correction_status": "reviewed"
+    },
+    {
+      "participant_id": "role-b",
+      "role_in_context": "role representative",
+      "opted_in": true,
+      "approved_profile_ref": "synthetic-role-brief",
+      "correction_status": "reviewed"
+    }
+  ],
+  "criteria": [
+    {
+      "criterion_id": "C-001",
+      "name": "Evidence of process improvement",
+      "category": "capability",
+      "importance_by_participant": {
+        "candidate-a": "important",
+        "role-b": "must_have"
+      },
+      "status": "unresolved",
+      "impact_if_unresolved": "high",
+      "evidence": [
+        {
+          "participant_id": "candidate-a",
+          "claim": "Candidate reports experience improving internal workflows, but no outcome metric is included in this synthetic example.",
+          "claim_type": "self_report",
+          "source_description": "Synthetic candidate profile",
+          "source_reference": null,
+          "observed_at": null,
+          "confidence": "low",
+          "confidence_rationale": "Self-report without a concrete work sample or outcome metric.",
+          "counterevidence": []
+        }
+      ],
+      "interpretation": "Potentially relevant experience exists, but the role's must-have is not yet evidenced sufficiently.",
+      "alternative_explanations": [
+        "The candidate may have strong experience but the profile may omit the metrics.",
+        "The role may accept a work sample as equivalent evidence."
+      ],
+      "unknowns": [
+        "Scale of improvement",
+        "Baseline and measured outcome"
+      ],
+      "questions_or_experiments": [
+        "Ask for a redacted work sample or a structured example with baseline, action, and outcome."
+      ]
+    }
+  ],
+  "summary": {
+    "alignments": [],
+    "complementary_differences": [],
+    "conflicts": [],
+    "high_impact_unknowns": [
+      "Evidence of process improvement outcome"
+    ],
+    "next_steps": [
+      "Run a consistent, job-relevant work-sample review before drawing a conclusion."
+    ]
+  },
+  "correction_window": "Both participants may correct factual claims before this example is treated as final.",
+  "limitations": [
+    "Synthetic data only; not a real candidate assessment.",
+    "No automated hiring recommendation or overall score."
+  ],
+  "human_decision_required": true
+}
