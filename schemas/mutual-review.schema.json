@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Mutual Compatibility Review",
+  "type": "object",
+  "required": ["schema_version", "review_id", "context", "participants", "criteria", "summary", "limitations"],
+  "properties": {
+    "schema_version": {"const": "2.1"},
+    "review_id": {"type": "string"},
+    "context": {"enum": ["job", "partner", "marriage", "other"]},
+    "purpose": {"type": "string"},
+    "participants": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "required": ["participant_id", "participated_voluntarily", "approved_shared_profile"],
+        "properties": {
+          "participant_id": {"type": "string"},
+          "participated_voluntarily": {"type": "boolean"},
+          "approved_shared_profile": {"type": "boolean"}
+        }
+      }
+    },
+    "criteria": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["criterion", "status", "evidence_from_each_side"],
+        "properties": {
+          "criterion": {"type": "string"},
+          "status": {"enum": ["aligned", "complementary", "unresolved", "conflicting", "not_applicable"]},
+          "evidence_from_each_side": {"type": "array", "items": {"type": "string"}},
+          "interpretation": {"type": "string"},
+          "confidence": {"enum": ["low", "medium", "high"]},
+          "questions_to_discuss": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "required": ["alignments", "tensions", "unknowns", "next_steps"],
+      "properties": {
+        "alignments": {"type": "array", "items": {"type": "string"}},
+        "tensions": {"type": "array", "items": {"type": "string"}},
+        "unknowns": {"type": "array", "items": {"type": "string"}},
+        "next_steps": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "limitations": {"type": "array", "items": {"type": "string"}},
+    "human_decision_required": {"const": true}
+  }
+}
