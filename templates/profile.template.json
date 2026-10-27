@@ -1,0 +1,113 @@
+{
+  "schema_version": "2.0",
+  "profile_id": "replace-with-private-id",
+  "updated_at": null,
+  "overview": {
+    "current_snapshot": "",
+    "desired_future": "",
+    "top_strengths": [],
+    "top_bottlenecks": [],
+    "confidence_summary": ""
+  },
+  "domains": {
+    "D01": {
+      "status": "not_started",
+      "summary": "",
+      "evidence_ids": [],
+      "hypotheses": [],
+      "unknowns": [],
+      "updated_at": null
+    },
+    "D02": {
+      "status": "not_started",
+      "summary": "",
+      "evidence_ids": [],
+      "hypotheses": [],
+      "unknowns": [],
+      "updated_at": null
+    },
+    "D03": {
+      "status": "not_started",
+      "summary": "",
+      "evidence_ids": [],
+      "hypotheses": [],
+      "unknowns": [],
+      "updated_at": null
+    },
+    "D04": {
+      "status": "not_started",
+      "summary": "",
+      "evidence_ids": [],
+      "hypotheses": [],
+      "unknowns": [],
+      "updated_at": null
+    },
+    "D05": {
+      "status": "not_started",
+      "summary": "",
+      "evidence_ids": [],
+      "hypotheses": [],
+      "unknowns": [],
+      "updated_at": null
+    },
+    "D06": {
+      "status": "not_started",
+      "summary": "",
+      "evidence_ids": [],
+      "hypotheses": [],
+      "unknowns": [],
+      "updated_at": null
+    },
+    "D07": {
+      "status": "not_started",
+      "summary": "",
+      "evidence_ids": [],
+      "hypotheses": [],
+      "unknowns": [],
+      "updated_at": null
+    },
+    "D08": {
+      "status": "not_started",
+      "summary": "",
+      "evidence_ids": [],
+      "hypotheses": [],
+      "unknowns": [],
+      "updated_at": null
+    },
+    "D09": {
+      "status": "not_started",
+      "summary": "",
+      "evidence_ids": [],
+      "hypotheses": [],
+      "unknowns": [],
+      "updated_at": null
+    },
+    "D10": {
+      "status": "not_started",
+      "summary": "",
+      "evidence_ids": [],
+      "hypotheses": [],
+      "unknowns": [],
+      "updated_at": null
+    },
+    "D11": {
+      "status": "not_started",
+      "summary": "",
+      "evidence_ids": [],
+      "hypotheses": [],
+      "unknowns": [],
+      "updated_at": null
+    },
+    "D12": {
+      "status": "not_started",
+      "summary": "",
+      "evidence_ids": [],
+      "hypotheses": [],
+      "unknowns": [],
+      "updated_at": null
+    }
+  },
+  "priorities": [],
+  "open_questions": [],
+  "changelog": []
+}

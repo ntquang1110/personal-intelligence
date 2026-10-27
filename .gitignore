@@ -1,0 +1,10 @@
+# Private personal data
+data/profile.json
+data/evidence.json
+data/decisions.json
+data/experiments.json
+outputs/*
+!outputs/README.md
+__pycache__/
+*.py[cod]
+.env

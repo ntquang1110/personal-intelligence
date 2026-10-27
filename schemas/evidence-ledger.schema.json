@@ -1,0 +1,5 @@
+{
+ "$schema":"https://json-schema.org/draft/2020-12/schema",
+ "title":"Evidence Ledger","type":"object","required":["schema_version","items"],
+ "properties":{"schema_version":{"const":"2.0"},"items":{"type":"array","items":{"type":"object","required":["id","claim","claim_type","source","confidence","related_domains"],"properties":{"id":{"type":"string"},"claim":{"type":"string"},"claim_type":{"enum":["fact","self_report","observation","inference","hypothesis","unknown"]},"source":{"type":"string"},"observed_at":{"type":["string","null"]},"context":{"type":"string"},"confidence":{"enum":["low","medium","high"]},"supports":{"type":"array","items":{"type":"string"}},"contradicts":{"type":"array","items":{"type":"string"}},"related_domains":{"type":"array","items":{"type":"string","pattern":"^D(0[1-9]|1[0-2])$"}},"privacy_level":{"enum":["public_safe","personal","sensitive"]}}}}}
+}

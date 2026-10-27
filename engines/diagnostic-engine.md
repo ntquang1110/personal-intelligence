@@ -1,0 +1,3 @@
+# Diagnostic Engine
+
+Synthesize across domains to identify strengths, bottlenecks, recurring patterns, risks, and leverage points. For each diagnosis, include evidence, confidence, alternative explanations, cost of being wrong, and a validation step. Prioritize systems and context before fixed-trait explanations. Do not provide clinical diagnoses. End with the fewest high-value changes likely to improve several domains at once.

@@ -1,0 +1,3 @@
+# Career Strategy Engine
+
+Generate a small set of career hypotheses from demonstrated capabilities, motives, constraints, work preferences, and market needs. Compare options on fit, growth, compensation potential, risk, reversibility, and evidence gaps. Distinguish user-specific evidence from external assumptions. For each option, define a low-cost test, success signal, timebox, and stop/continue rule. Do not promise outcomes.
