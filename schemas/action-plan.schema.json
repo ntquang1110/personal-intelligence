@@ -1,0 +1,5 @@
+{
+ "$schema":"https://json-schema.org/draft/2020-12/schema",
+ "title":"Personal Action Plan","type":"object","required":["schema_version","period","actions"],
+ "properties":{"schema_version":{"const":"2.0"},"period":{"type":"string"},"actions":{"type":"array","items":{"type":"object","required":["id","action","why","first_step","success_measure","review_date"],"properties":{"id":{"type":"string"},"action":{"type":"string"},"why":{"type":"string"},"evidence_ids":{"type":"array","items":{"type":"string"}},"priority":{"enum":["P1","P2","P3"]},"effort":{"enum":["low","medium","high"]},"first_step":{"type":"string"},"success_measure":{"type":"string"},"review_date":{"type":"string"},"fallback":{"type":"string"}}}}}
+}

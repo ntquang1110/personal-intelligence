@@ -1,0 +1,5 @@
+{
+ "$schema":"https://json-schema.org/draft/2020-12/schema",
+ "title":"Career Strategy","type":"object","required":["schema_version","options","leading_hypothesis","experiments"],
+ "properties":{"schema_version":{"const":"2.0"},"options":{"type":"array","minItems":1,"items":{"type":"object","required":["name","fit_rationale","gaps","tradeoffs","unknowns"],"properties":{"name":{"type":"string"},"fit_rationale":{"type":"string"},"evidence_ids":{"type":"array","items":{"type":"string"}},"gaps":{"type":"array","items":{"type":"string"}},"tradeoffs":{"type":"array","items":{"type":"string"}},"unknowns":{"type":"array","items":{"type":"string"}},"confidence":{"enum":["low","medium","high"]}}}},"leading_hypothesis":{"type":"string"},"experiments":{"type":"array","items":{"type":"object","required":["test","success_signal"],"properties":{"test":{"type":"string"},"duration_days":{"type":"integer","minimum":1},"success_signal":{"type":"string"},"decision_rule":{"type":"string"}}}}}
+}

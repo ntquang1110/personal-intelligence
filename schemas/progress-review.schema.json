@@ -1,0 +1,5 @@
+{
+ "$schema":"https://json-schema.org/draft/2020-12/schema",
+ "title":"Progress Review","type":"object","required":["schema_version","review_date","wins","misses_and_learning","profile_changes","next_priorities"],
+ "properties":{"schema_version":{"const":"2.0"},"review_date":{"type":"string"},"wins":{"type":"array","items":{"type":"string"}},"misses_and_learning":{"type":"array","items":{"type":"string"}},"profile_changes":{"type":"array","items":{"type":"object","required":["field","change_reason"],"properties":{"field":{"type":"string"},"change_reason":{"type":"string"},"evidence_ids":{"type":"array","items":{"type":"string"}}}}},"next_priorities":{"type":"array","items":{"type":"string"}}}
+}
