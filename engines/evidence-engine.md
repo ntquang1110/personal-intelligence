@@ -1,0 +1,3 @@
+# Evidence Engine
+
+For every material claim, record: claim ID, statement, claim type (fact, self-report, observation, inference, hypothesis, unknown), source, date/context, confidence, relevant domains, and counterevidence. Keep facts separate from interpretations. Prefer recent, specific, repeated evidence; note when sources conflict or are unavailable. Never manufacture data or imply persistence unless files were actually saved. Output an evidence ledger and the highest-impact gaps.

@@ -1,12 +1,3 @@
-# Outputs Directory
+# Outputs
 
-Store generated reports and structured records here only when the runtime can actually write files.
-
-Suggested artifacts:
-- `self-discovery.md`
-- `behavioral-intelligence.md`
-- `capability-map.json`
-- `progress-report.json`
-- `personal-intelligence-dossier.md`
-
-Use dated filenames for longitudinal records. Do not overwrite historical assessments without retaining prior versions. Do not put real personal data in repository examples or tests.
+Store generated reports here locally. Keep personalized reports private; this directory is ignored by Git except for this README. Suggested outputs include personal overview, deep profile, diagnostic report, career strategy, life strategy, 90-day plan, and dated progress reviews.
