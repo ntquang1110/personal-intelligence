@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "claim_id": "claim-synthetic-001",
+  "claim": "The synthetic user reports beginning multiple online courses but completing few.",
+  "class": "OBSERVATION",
+  "source_refs": [
+    "synthetic-example"
+  ],
+  "supporting_evidence": [
+    "The synthetic user explicitly reported this pattern in a hypothetical example."
+  ],
+  "counterevidence": [
+    "No completion records or other examples are available."
+  ],
+  "confidence": "low",
+  "confidence_rationale": "This is a single self-report in a synthetic example and has not been independently checked.",
+  "validation_status": "unvalidated",
+  "date_or_period": null,
+  "next_validation_step": "Ask for concrete examples and track course completion over a defined period."
+}

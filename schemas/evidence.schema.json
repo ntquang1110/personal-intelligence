@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Evidence Claim",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "claim_id",
+    "claim",
+    "class",
+    "confidence",
+    "confidence_rationale",
+    "validation_status"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0"
+    },
+    "claim_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "claim": {
+      "type": "string",
+      "minLength": 1
+    },
+    "class": {
+      "enum": [
+        "OBSERVATION",
+        "INFERENCE",
+        "HYPOTHESIS",
+        "VALIDATED",
+        "UNKNOWN"
+      ]
+    },
+    "source_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "supporting_evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "counterevidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "confidence": {
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ]
+    },
+    "confidence_rationale": {
+      "type": "string",
+      "minLength": 1
+    },
+    "validation_status": {
+      "enum": [
+        "unvalidated",
+        "partially_validated",
+        "validated",
+        "contradicted",
+        "unresolved"
+      ]
+    },
+    "date_or_period": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "next_validation_step": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

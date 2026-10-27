@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Behavioral Experiment",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "experiment_id",
+    "hypothesis",
+    "baseline",
+    "intervention",
+    "duration_days",
+    "metrics",
+    "success_criteria",
+    "stop_conditions"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0"
+    },
+    "experiment_id": {
+      "type": "string"
+    },
+    "hypothesis": {
+      "type": "string"
+    },
+    "alternative_explanations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "baseline": {
+      "type": "object"
+    },
+    "intervention": {
+      "type": "string"
+    },
+    "duration_days": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 90
+    },
+    "metrics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "measurement_method"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "measurement_method": {
+            "type": "string"
+          },
+          "target": {
+            "type": [
+              "string",
+              "number",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "success_criteria": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "stop_conditions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "confounders": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "review_date": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}
