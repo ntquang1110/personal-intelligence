@@ -2,23 +2,23 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Mutual Compatibility Review",
   "type": "object",
-  "required": ["schema_version", "review_id", "context", "participants", "criteria", "summary", "limitations"],
+  "required": ["schema_version", "review_id", "context", "participants", "criteria", "summary", "limitations", "human_decision_required"],
   "properties": {
     "schema_version": {"const": "2.1"},
-    "review_id": {"type": "string"},
+    "review_id": {"type": "string", "minLength": 1},
     "context": {"enum": ["job", "partner", "marriage", "other"]},
-    "purpose": {"type": "string"},
+    "purpose": {"type": "string", "minLength": 1},
     "participants": {
-      "type": "array",
-      "minItems": 2,
+      "type": "array", "minItems": 2,
       "items": {
         "type": "object",
         "required": ["participant_id", "participated_voluntarily", "approved_shared_profile"],
         "properties": {
-          "participant_id": {"type": "string"},
-          "participated_voluntarily": {"type": "boolean"},
-          "approved_shared_profile": {"type": "boolean"}
-        }
+          "participant_id": {"type": "string", "minLength": 1},
+          "participated_voluntarily": {"const": true},
+          "approved_shared_profile": {"const": true}
+        },
+        "additionalProperties": false
       }
     },
     "criteria": {
@@ -27,13 +27,14 @@
         "type": "object",
         "required": ["criterion", "status", "evidence_from_each_side"],
         "properties": {
-          "criterion": {"type": "string"},
+          "criterion": {"type": "string", "minLength": 1},
           "status": {"enum": ["aligned", "complementary", "unresolved", "conflicting", "not_applicable"]},
           "evidence_from_each_side": {"type": "array", "items": {"type": "string"}},
           "interpretation": {"type": "string"},
           "confidence": {"enum": ["low", "medium", "high"]},
           "questions_to_discuss": {"type": "array", "items": {"type": "string"}}
-        }
+        },
+        "additionalProperties": false
       }
     },
     "summary": {
@@ -44,9 +45,11 @@
         "tensions": {"type": "array", "items": {"type": "string"}},
         "unknowns": {"type": "array", "items": {"type": "string"}},
         "next_steps": {"type": "array", "items": {"type": "string"}}
-      }
+      },
+      "additionalProperties": false
     },
     "limitations": {"type": "array", "items": {"type": "string"}},
     "human_decision_required": {"const": true}
-  }
+  },
+  "additionalProperties": false
 }

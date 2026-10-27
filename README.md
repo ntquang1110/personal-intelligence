@@ -36,6 +36,12 @@ This is a suggested dependency flow, not a requirement to run every skill. Do no
 - `tests/`: portable Python standard-library validation tests.
 - `outputs/`: destination for generated reports; contains a manifest explaining intended use.
 
+## Shared matching core
+
+Career fit and partner/marriage compatibility use the same explainable comparison engine and record contract, with context-specific criteria. The engine compares each side's stated needs and evidence, distinguishes alignment from complementary differences, conflicts and unknowns, and recommends questions or low-risk experiments. It does not calculate a universal compatibility score or make automatic hiring/relationship decisions.
+
+Read `engines/matching/ENGINE.md`, `MATCHING_CRITERIA_CATALOG.md`, and `prompts/START_MATCHING.md`. The example in `templates/match-assessment.template.json` uses synthetic data only.
+
 ## Runtime contract
 
 A compliant runtime should:
@@ -60,4 +66,4 @@ Suggested file names:
 
 ## Limitations
 
-This repository provides operational prompts and validation scaffolding; it does not itself include a language model, automatic memory, external connectors, or a user database. JSON Schema validation tests in the standard-library test suite check basic structure and repository contracts; they do not replace a full JSON Schema validator. Install a JSON Schema validator if strict schema validation is required in production.
+This repository provides operational prompts and validation scaffolding; it does not itself include a language model, automatic memory, external connectors, or a user database. Uploading it does not create persistent memory or write results back to GitHub. The tests check repository contracts and sample consistency; strict JSON Schema validation should also run in CI with a Draft 2020-12 validator when available.
