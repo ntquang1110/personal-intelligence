@@ -1,14 +1,107 @@
 {
- "$schema":"https://json-schema.org/draft/2020-12/schema",
- "title":"Personal Intelligence Profile v2","type":"object",
- "required":["schema_version","profile_id","updated_at","overview","domains","priorities","open_questions"],
- "properties":{
-  "schema_version":{"const":"2.0"},"profile_id":{"type":"string","minLength":1},"updated_at":{"type":["string","null"]},
-  "overview":{"type":"object","required":["current_snapshot","desired_future","top_strengths","top_bottlenecks"],"properties":{"current_snapshot":{"type":"string"},"desired_future":{"type":"string"},"top_strengths":{"type":"array","items":{"type":"string"}},"top_bottlenecks":{"type":"array","items":{"type":"string"}},"confidence_summary":{"type":"string"}}},
-  "domains":{"type":"object","required":["D01","D02","D03","D04","D05","D06","D07","D08","D09","D10","D11","D12"],"properties":{"D01":{"$ref":"#/$defs/domain"},"D02":{"$ref":"#/$defs/domain"},"D03":{"$ref":"#/$defs/domain"},"D04":{"$ref":"#/$defs/domain"},"D05":{"$ref":"#/$defs/domain"},"D06":{"$ref":"#/$defs/domain"},"D07":{"$ref":"#/$defs/domain"},"D08":{"$ref":"#/$defs/domain"},"D09":{"$ref":"#/$defs/domain"},"D10":{"$ref":"#/$defs/domain"},"D11":{"$ref":"#/$defs/domain"},"D12":{"$ref":"#/$defs/domain"}}},
-  "priorities":{"type":"array","items":{"type":"object","required":["priority","rationale","next_action"],"properties":{"priority":{"type":"string"},"rationale":{"type":"string"},"next_action":{"type":"string"},"confidence":{"enum":["low","medium","high"]},"review_date":{"type":["string","null"]}}}},
-  "open_questions":{"type":"array","items":{"type":"string"}},
-  "changelog":{"type":"array","items":{"type":"object","required":["date","change"],"properties":{"date":{"type":"string"},"change":{"type":"string"},"evidence_ids":{"type":"array","items":{"type":"string"}}}}}
- },
- "$defs":{"domain":{"type":"object","required":["status","summary","evidence_ids","hypotheses","unknowns"],"properties":{"status":{"enum":["not_started","in_progress","provisional","established","needs_review"]},"summary":{"type":"string"},"evidence_ids":{"type":"array","items":{"type":"string"}},"hypotheses":{"type":"array","items":{"type":"object","required":["claim","confidence"],"properties":{"claim":{"type":"string"},"confidence":{"enum":["low","medium","high"]},"alternatives":{"type":"array","items":{"type":"string"}}}},"unknowns":{"type":"array","items":{"type":"string"}},"updated_at":{"type":["string","null"]}}}}
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Personal Intelligence Profile v2",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "profile_id",
+    "updated_at",
+    "overview",
+    "domains",
+    "priorities",
+    "open_questions"
+  ],
+  "properties": {
+    "schema_version": { "const": "2.0" },
+    "profile_id": { "type": "string", "minLength": 1 },
+    "updated_at": { "type": ["string", "null"] },
+    "overview": {
+      "type": "object",
+      "required": ["current_snapshot", "desired_future", "top_strengths", "top_bottlenecks"],
+      "properties": {
+        "current_snapshot": { "type": "string" },
+        "desired_future": { "type": "string" },
+        "top_strengths": { "type": "array", "items": { "type": "string" } },
+        "top_bottlenecks": { "type": "array", "items": { "type": "string" } },
+        "confidence_summary": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "domains": {
+      "type": "object",
+      "required": ["D01", "D02", "D03", "D04", "D05", "D06", "D07", "D08", "D09", "D10", "D11", "D12"],
+      "properties": {
+        "D01": { "$ref": "#/$defs/domain" },
+        "D02": { "$ref": "#/$defs/domain" },
+        "D03": { "$ref": "#/$defs/domain" },
+        "D04": { "$ref": "#/$defs/domain" },
+        "D05": { "$ref": "#/$defs/domain" },
+        "D06": { "$ref": "#/$defs/domain" },
+        "D07": { "$ref": "#/$defs/domain" },
+        "D08": { "$ref": "#/$defs/domain" },
+        "D09": { "$ref": "#/$defs/domain" },
+        "D10": { "$ref": "#/$defs/domain" },
+        "D11": { "$ref": "#/$defs/domain" },
+        "D12": { "$ref": "#/$defs/domain" }
+      },
+      "additionalProperties": false
+    },
+    "priorities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["priority", "rationale", "next_action"],
+        "properties": {
+          "priority": { "type": "string" },
+          "rationale": { "type": "string" },
+          "next_action": { "type": "string" },
+          "confidence": { "enum": ["low", "medium", "high"] },
+          "review_date": { "type": ["string", "null"] }
+        },
+        "additionalProperties": false
+      }
+    },
+    "open_questions": { "type": "array", "items": { "type": "string" } },
+    "changelog": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["date", "change"],
+        "properties": {
+          "date": { "type": "string" },
+          "change": { "type": "string" },
+          "evidence_ids": { "type": "array", "items": { "type": "string" } }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "domain": {
+      "type": "object",
+      "required": ["status", "summary", "evidence_ids", "hypotheses", "unknowns"],
+      "properties": {
+        "status": { "enum": ["not_started", "in_progress", "provisional", "established", "needs_review"] },
+        "summary": { "type": "string" },
+        "evidence_ids": { "type": "array", "items": { "type": "string" } },
+        "hypotheses": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["claim", "confidence"],
+            "properties": {
+              "claim": { "type": "string" },
+              "confidence": { "enum": ["low", "medium", "high"] },
+              "alternatives": { "type": "array", "items": { "type": "string" } }
+            },
+            "additionalProperties": false
+          }
+        },
+        "unknowns": { "type": "array", "items": { "type": "string" } },
+        "updated_at": { "type": ["string", "null"] }
+      },
+      "additionalProperties": false
+    }
+  }
 }
