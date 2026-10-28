@@ -20,7 +20,9 @@ When the task is a deep personal diagnostic, use `docs/PERSONAL_HUMAN_MAP.md`, `
 Required principles:
 - Explain mechanisms, not just traits: context/trigger → interpretation/attention → reasoning/decision strategy → action → outcome → learning.
 - Preserve source-level provenance and evidence independence.
-- For consequential inferences, include counterevidence, at least one rival explanation, scope conditions, and a validation test.
+- For consequential inferences, include counterevidence, at least two plausible competing mechanisms when evidence permits, scope conditions, and a validation test.
+- For workload/execution topics, distinguish capacity overload, external constraints/dependencies, discretionary choices, active-work-in-progress overload, context switching, and decision uncertainty. Do not attribute a bottleneck to personal weakness without evidence.
+- Recommendations must target the mechanism supported by evidence. If mechanisms remain unresolved, propose a discriminating test rather than a generic productivity plan.
 - Separate interest, knowledge, skill, demonstrated capability, and potential hypothesis.
 - Keep astrology, numerology, zodiac, and similar symbolic systems in a separate `interpretive_only` lane. They must not support empirical claims, increase empirical confidence, or determine competence or suitability.
 - Do not collapse contradictory findings into an average or a single personality label.
