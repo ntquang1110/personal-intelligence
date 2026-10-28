@@ -1,0 +1,204 @@
+{
+  "schema_version": "1.1.0",
+  "map_id": "example-human-map-synthetic",
+  "subject_ref": "synthetic-person-001",
+  "created_at": null,
+  "updated_at": null,
+  "purpose": "Demonstrate a whole-person map and construct-level cross-assessment synthesis. Entire record is synthetic; not a real person's profile.",
+  "evidence_inventory": [
+    {
+      "source_ref": "synthetic-big-five",
+      "source_type": "assessment",
+      "date_range": null,
+      "context": "Synthetic illustration only",
+      "consent_status": "not_applicable",
+      "limitations": [
+        "Invented example result; not a real administration."
+      ]
+    },
+    {
+      "source_ref": "synthetic-interview-01",
+      "source_type": "interview",
+      "date_range": null,
+      "context": "Synthetic illustration only",
+      "consent_status": "not_applicable",
+      "limitations": [
+        "Self-report; invented for schema demonstration."
+      ]
+    },
+    {
+      "source_ref": "synthetic-work-sample-01",
+      "source_type": "work_sample",
+      "date_range": null,
+      "context": "Synthetic planning task",
+      "consent_status": "not_applicable",
+      "limitations": [
+        "One bounded task cannot establish a stable trait."
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "claim-syn-001",
+      "claim": "In this synthetic example, the person reports enjoying open-ended exploration and produces a detailed solution in a bounded task.",
+      "domain": "cognition",
+      "claim_class": "observation",
+      "status": "observed",
+      "evidence_refs": [
+        "synthetic-interview-01",
+        "synthetic-work-sample-01"
+      ],
+      "counterevidence_refs": [],
+      "confidence": "low",
+      "mechanism": "The interview suggests interest in exploration; the work sample shows one instance of structured decomposition.",
+      "alternatives": [
+        "Task familiarity may explain the work-sample performance.",
+        "The person may prefer exploration only in low-pressure contexts."
+      ],
+      "scope_conditions": [
+        "Synthetic example only; no generalization to real people."
+      ]
+    },
+    {
+      "claim_id": "claim-syn-002",
+      "claim": "Whether broad exploration causes execution bottlenecks is unknown in this example.",
+      "domain": "behavior",
+      "claim_class": "unknown",
+      "status": "unknown",
+      "evidence_refs": [
+        "synthetic-interview-01"
+      ],
+      "counterevidence_refs": [],
+      "confidence": "not_assessed",
+      "mechanism": null,
+      "alternatives": [
+        "Workload may exceed capacity.",
+        "External dependencies may account for delays."
+      ],
+      "scope_conditions": [
+        "Requires longitudinal task and capacity data."
+      ]
+    }
+  ],
+  "domains": {
+    "context": [
+      "Synthetic context only."
+    ],
+    "personality": [
+      "No real trait score is provided."
+    ],
+    "cognition": [
+      "One synthetic work sample illustrates decomposition; not a stable ability estimate."
+    ],
+    "motivation": [
+      "Self-reported exploration interest in this fictional case."
+    ],
+    "capabilities": [
+      "One work sample; repeatability and transfer unknown."
+    ],
+    "behavior": [
+      "No longitudinal behavior data."
+    ],
+    "environment_fit": [
+      "Not assessed."
+    ],
+    "blind_spots": [
+      "Potential scope expansion is only a hypothesis; do not promote without evidence."
+    ],
+    "development": [
+      "Collect baseline and repeat observations before choosing an intervention."
+    ],
+    "stress_recovery": [
+      "Unknown / insufficient evidence; no clinical inference is made."
+    ],
+    "strengths_and_costs": [
+      "Unknown / insufficient evidence; distinguish observed capability from interest and hypothesis."
+    ],
+    "contradictions": [
+      "No independent assessment results available to compare; contradictions remain unassessed."
+    ]
+  },
+  "unknowns": [
+    {
+      "question": "Does exploration reliably displace execution?",
+      "why_it_matters": "This distinguishes a genuine work-in-progress problem from a harmless preference.",
+      "how_to_resolve": "Track active goals, estimated/actual effort, blocked time, and completed outcomes over four weeks."
+    }
+  ],
+  "next_actions": [
+    {
+      "action": "Run a four-week work-in-progress and capacity log.",
+      "linked_claim_ids": [
+        "claim-syn-002"
+      ],
+      "measure_of_success": "At least 90% of active tasks have owner, estimated effort, status, blocker and actual effort recorded."
+    }
+  ],
+  "assessment_synthesis": {
+    "schema_version": "1.0.0",
+    "synthesis_id": "synthesis-synthetic-001",
+    "created_at": null,
+    "constructs": [
+      {
+        "construct_id": "construct-syn-exploration",
+        "construct": "Exploration vs. execution",
+        "working_definition": "Preference for generating/considering options compared with closing defined tasks.",
+        "assessment_findings": [
+          {
+            "assessment_id": "synthetic-big-five",
+            "instrument": "Synthetic Big Five illustration",
+            "result_ref": "synthetic-big-five",
+            "finding": "No relevant validated construct result is supplied; included to demonstrate explicit insufficiency.",
+            "lane": "empirical",
+            "limitations": [
+              "No actual test administered; no score may be inferred."
+            ]
+          }
+        ],
+        "behavioral_evidence_refs": [
+          "synthetic-interview-01",
+          "synthetic-work-sample-01"
+        ],
+        "agreement": [
+          "Interview and work sample both show engagement with an open-ended task in this fictional example."
+        ],
+        "disagreement": [
+          "No valid trait assessment is available to compare; agreement across sources is not established."
+        ],
+        "context_moderators": [
+          "Task novelty, deadline pressure, clarity, and external dependencies are unmeasured."
+        ],
+        "alternatives": [
+          {
+            "explanation": "Observed detail may reflect task familiarity rather than a general cognitive style.",
+            "distinguishing_observation": "Compare performance on unfamiliar and familiar tasks with matched constraints."
+          },
+          {
+            "explanation": "Any delay may be caused by blocked dependencies rather than exploration.",
+            "distinguishing_observation": "Compare blocked versus unblocked task completion and time use."
+          }
+        ],
+        "confidence": {
+          "level": "low",
+          "rationale": "Synthetic data and one bounded work sample cannot establish a stable construct."
+        },
+        "validation_plan": [
+          "Administer an appropriately selected, documented assessment only if it answers a defined question.",
+          "Collect repeated work episodes and outcomes across contexts."
+        ]
+      }
+    ],
+    "global_limitations": [
+      "All content is synthetic and is not a profile of the repository owner.",
+      "Never average scores across instruments with different constructs or norms."
+    ],
+    "review_status": "insufficient_evidence"
+  },
+  "interpretive_appendix": null,
+  "separation_policy": {
+    "empirical_claims_exclude_interpretive_evidence": true,
+    "interpretive_appendix_non_predictive": true
+  },
+  "map_version": 1,
+  "change_log": []
+}

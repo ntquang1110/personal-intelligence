@@ -1,0 +1,191 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://personal-intelligence.local/schemas/cross-assessment-synthesis.schema.json",
+  "title": "Cross-assessment synthesis",
+  "description": "Construct-level synthesis across assessments and behavioral evidence. Do not average unlike scores or erase contradictions.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "synthesis_id",
+    "created_at",
+    "constructs",
+    "global_limitations",
+    "review_status"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "synthesis_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "created_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "constructs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "construct_id",
+          "construct",
+          "working_definition",
+          "assessment_findings",
+          "behavioral_evidence_refs",
+          "agreement",
+          "disagreement",
+          "context_moderators",
+          "alternatives",
+          "confidence",
+          "validation_plan"
+        ],
+        "properties": {
+          "construct_id": {
+            "type": "string"
+          },
+          "construct": {
+            "type": "string"
+          },
+          "working_definition": {
+            "type": "string"
+          },
+          "assessment_findings": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "assessment_id",
+                "instrument",
+                "result_ref",
+                "finding",
+                "lane",
+                "limitations"
+              ],
+              "properties": {
+                "assessment_id": {
+                  "type": "string"
+                },
+                "instrument": {
+                  "type": "string"
+                },
+                "result_ref": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "finding": {
+                  "type": "string"
+                },
+                "lane": {
+                  "enum": [
+                    "empirical",
+                    "interpretive_only",
+                    "user_meaning"
+                  ]
+                },
+                "limitations": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "behavioral_evidence_refs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "agreement": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "disagreement": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "context_moderators": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "alternatives": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "explanation",
+                "distinguishing_observation"
+              ],
+              "properties": {
+                "explanation": {
+                  "type": "string"
+                },
+                "distinguishing_observation": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "confidence": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "level",
+              "rationale"
+            ],
+            "properties": {
+              "level": {
+                "enum": [
+                  "low",
+                  "moderate",
+                  "high",
+                  "not_assessed"
+                ]
+              },
+              "rationale": {
+                "type": "string"
+              }
+            }
+          },
+          "validation_plan": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "global_limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "review_status": {
+      "enum": [
+        "provisional",
+        "reviewed",
+        "insufficient_evidence"
+      ]
+    }
+  }
+}

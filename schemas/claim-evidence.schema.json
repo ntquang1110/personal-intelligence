@@ -1,0 +1,222 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://personal-intelligence.local/schemas/claim-evidence.schema.json",
+  "title": "Evidence-linked human claim",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "claim_id",
+    "claim",
+    "claim_class",
+    "status",
+    "evidence_refs",
+    "counterevidence_refs",
+    "alternatives",
+    "scope_conditions",
+    "confidence",
+    "validation"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "claim_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "claim": {
+      "type": "string",
+      "minLength": 1
+    },
+    "domain": {
+      "enum": [
+        "context",
+        "personality",
+        "cognition",
+        "motivation",
+        "capability",
+        "behavior",
+        "stress_response",
+        "environment_fit",
+        "development",
+        "interpretive_only"
+      ]
+    },
+    "claim_class": {
+      "enum": [
+        "observation",
+        "inference",
+        "hypothesis",
+        "validated",
+        "unknown"
+      ]
+    },
+    "status": {
+      "enum": [
+        "observed",
+        "supported_inference",
+        "hypothesis",
+        "unknown",
+        "contradicted",
+        "retired"
+      ]
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "source_ref",
+          "evidence_type",
+          "supports"
+        ],
+        "properties": {
+          "source_ref": {
+            "type": "string"
+          },
+          "evidence_type": {
+            "enum": [
+              "self_report",
+              "observed_behavior",
+              "assessment",
+              "performance_task",
+              "work_sample",
+              "observer_feedback",
+              "longitudinal_outcome",
+              "symbolic_interpretation"
+            ]
+          },
+          "supports": {
+            "type": "boolean"
+          },
+          "independence_group": {
+            "type": "string"
+          },
+          "date": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date"
+          },
+          "relevance_note": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "counterevidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "alternatives": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "explanation",
+          "distinguishing_evidence"
+        ],
+        "properties": {
+          "explanation": {
+            "type": "string"
+          },
+          "distinguishing_evidence": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "mechanism": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "scope_conditions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "confidence": {
+      "type": "object",
+      "required": [
+        "level",
+        "rationale"
+      ],
+      "properties": {
+        "level": {
+          "enum": [
+            "low",
+            "moderate",
+            "high",
+            "not_assessed"
+          ]
+        },
+        "rationale": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "validation": {
+      "type": "object",
+      "required": [
+        "test",
+        "success_criteria",
+        "status"
+      ],
+      "properties": {
+        "test": {
+          "type": "string"
+        },
+        "success_criteria": {
+          "type": "string"
+        },
+        "review_date": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "status": {
+          "enum": [
+            "not_planned",
+            "planned",
+            "in_progress",
+            "supported",
+            "not_supported",
+            "inconclusive"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "created_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "supersedes_claim_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "privacy_level": {
+      "enum": [
+        "private",
+        "shareable_summary"
+      ]
+    }
+  }
+}
