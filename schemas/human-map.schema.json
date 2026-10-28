@@ -16,7 +16,9 @@
     "unknowns",
     "next_actions",
     "separation_policy",
-    "assessment_synthesis"
+    "assessment_synthesis",
+    "map_version",
+    "change_log"
   ],
   "properties": {
     "schema_version": {
@@ -196,7 +198,10 @@
         "behavior",
         "environment_fit",
         "blind_spots",
-        "development"
+        "development",
+        "stress_recovery",
+        "strengths_and_costs",
+        "contradictions"
       ],
       "properties": {
         "context": {
@@ -248,6 +253,24 @@
           }
         },
         "development": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "stress_recovery": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "strengths_and_costs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "contradictions": {
           "type": "array",
           "items": {
             "type": "string"
@@ -371,6 +394,53 @@
     },
     "assessment_synthesis": {
       "$ref": "cross-assessment-synthesis.schema.json"
+    },
+    "map_version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "change_log": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "version",
+          "changed_at",
+          "summary",
+          "changed_claim_ids",
+          "triggering_evidence_refs"
+        ],
+        "properties": {
+          "version": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "changed_at": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "summary": {
+            "type": "string",
+            "minLength": 1
+          },
+          "changed_claim_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "triggering_evidence_refs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
     }
   }
 }
