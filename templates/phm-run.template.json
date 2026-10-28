@@ -1,0 +1,65 @@
+{
+  "subject_ref": "subject-example",
+  "purpose": "Understand decision and behavior patterns using evidence; synthetic example only.",
+  "evidence": [
+    {
+      "id": "ev-001",
+      "text": "In a synthetic project episode, the subject reported three concurrent goals and one deadline.",
+      "source_type": "interview",
+      "source_ref": "interview-001",
+      "independence_group": "interview-001",
+      "limitations": [
+        "Self-report; not independently verified."
+      ]
+    },
+    {
+      "id": "ev-002",
+      "text": "The synthetic subject reported a protected work block was interrupted twice.",
+      "source_type": "behavioral_episode",
+      "source_ref": "episode-001",
+      "independence_group": "episode-001",
+      "limitations": [
+        "Single episode."
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "claim-001",
+      "claim": "Concurrent active goals may be contributing to missed milestones.",
+      "claim_class": "hypothesis",
+      "status": "hypothesis",
+      "confidence": "low",
+      "evidence_refs": [
+        "ev-001",
+        "ev-002"
+      ],
+      "counterevidence_refs": [],
+      "mechanisms": [
+        {
+          "id": "m1",
+          "description": "Capacity overload",
+          "predictions": [
+            "Total estimated effort exceeds available hours."
+          ],
+          "weakening_evidence": [
+            "A realistic effort inventory shows sufficient capacity."
+          ],
+          "discriminating_test": "Compare estimated required effort to available capacity for one week."
+        },
+        {
+          "id": "m2",
+          "description": "Context switching",
+          "predictions": [
+            "Milestone throughput improves when work-in-progress is limited."
+          ],
+          "weakening_evidence": [
+            "Low switching and no improvement under a work-in-progress limit."
+          ],
+          "discriminating_test": "Limit active tasks for one week and compare throughput."
+        }
+      ]
+    }
+  ],
+  "interpretive_items": []
+}
