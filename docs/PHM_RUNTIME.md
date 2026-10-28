@@ -49,7 +49,9 @@ The included template is synthetic. Replace it with consented, evidence-backed i
 ## Outputs and gates
 
 - Deterministic mode: `report.json` and `report.md`.
-- Model-assisted mode: `run.json`, final `report.md`, and phase artifacts `draft.md`, `red_team_1.md`, `revision.md`, `red_team_2.md`, `user_fit_gate.md`.
+- Model-assisted mode: `run.json`, final `report.md`, phase artifacts `draft.md`, `red_team_1.md`, `revision.md`, `red_team_2.md`, `user_fit_gate.md`, and (only if validation succeeds) `human-map.json`.
+- After five review phases, the runner requests a structured map against the repository schema, validates schema and internal evidence references, verifies that every evidence source is present in the input packet, and retries up to three times with validation errors. It fails closed: invalid JSON is not emitted as `human-map.json`; the report remains provisional and includes validation errors.
+- `scripts/phm_map_validate.py` can independently validate and render an existing structured map: `python scripts/phm_map_validate.py path/to/human-map.json --out path/to/report.md`.
 - Structural `fail`: blocker exists, such as an unknown evidence reference or symbolic source supporting an empirical claim.
 - Structural `provisional`: no blocker, but warnings remain.
 - Structural `structural_pass`: no structural warnings; this does not validate truth or semantic quality.
