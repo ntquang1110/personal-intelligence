@@ -25,6 +25,10 @@ class CrossAssessmentContracts(unittest.TestCase):
                        "behavior", "environment_fit", "blind_spots", "development"):
             self.assertIn(domain, data["domains"])
         self.assertIn("assessment_synthesis", data)
+        map_schema = self.load("schemas/human-map.schema.json")
+        self.assertEqual(map_schema["properties"]["schema_version"]["const"], "1.1.0")
+        self.assertIn("assessment_synthesis", map_schema["required"])
+        self.assertEqual(map_schema["properties"]["assessment_synthesis"]["$ref"], "cross-assessment-synthesis.schema.json")
         self.assertTrue(data["separation_policy"]["empirical_claims_exclude_interpretive_evidence"])
         self.assertIsNone(data["interpretive_appendix"])
         self.assertIn("synthetic", data["purpose"].lower())
