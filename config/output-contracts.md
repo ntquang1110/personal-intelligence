@@ -15,7 +15,7 @@ Each report should use this structure where relevant:
 Omit irrelevant headings rather than filling them with boilerplate.
 
 ## Personal Human Map contract
-When the task is a deep personal diagnostic, use `docs/PERSONAL_HUMAN_MAP.md`, `prompts/START_PERSONAL_HUMAN_MAP.md`, and `workflows/personal-human-map.md`.
+When the task is a deep personal diagnostic, use `docs/PERSONAL_HUMAN_MAP.md`, `docs/CROSS_ASSESSMENT_SYNTHESIS.md`, `prompts/START_PERSONAL_HUMAN_MAP.md`, and `workflows/personal-human-map.md`. The structured human map must include `assessment_synthesis` using `schemas/cross-assessment-synthesis.schema.json`.
 
 Required principles:
 - Explain mechanisms, not just traits: context/trigger → interpretation/attention → reasoning/decision strategy → action → outcome → learning.
