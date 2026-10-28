@@ -38,8 +38,10 @@ class PHMMapValidationTests(unittest.TestCase):
 
     def test_renderer_includes_domains_synthesis_and_unknowns(self):
         report = render_markdown(self.data)
-        for phrase in ("## Whole-person domains", "### Personality", "## Cross-assessment synthesis",
-                       "## Unknowns and validation plan", "## Next actions", "PROVISIONAL"):
+        for phrase in ("## Whole-person domains", "### Personality", "### Stress and recovery (non-clinical)",
+                       "### Strengths and costs by context", "### Contradictions and unresolved tensions",
+                       "## Cross-assessment synthesis", "## Unknowns and validation plan",
+                       "## Next actions", "## Longitudinal change log"):
             if phrase == "PROVISIONAL":
                 continue
             self.assertIn(phrase, report)
