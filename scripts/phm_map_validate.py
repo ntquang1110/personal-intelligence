@@ -112,6 +112,9 @@ def render_markdown(data: dict[str, Any]) -> str:
         "motivation": "Motivation and values", "capabilities": "Capabilities",
         "behavior": "Behavior and execution", "environment_fit": "Environment and collaboration fit",
         "blind_spots": "Blind spots", "development": "Development direction",
+        "stress_recovery": "Stress and recovery (non-clinical)",
+        "strengths_and_costs": "Strengths and costs by context",
+        "contradictions": "Contradictions and unresolved tensions",
     }
     for key, label in domain_labels.items():
         lines.extend(["", f"### {label}"])
@@ -164,7 +167,14 @@ def render_markdown(data: dict[str, Any]) -> str:
     if data.get("interpretive_appendix"):
         lines.extend(["", "## Interpretive-only appendix", "This section is separate from empirical findings."])
         lines.extend(f"- {x}" for x in data["interpretive_appendix"].get("interpretation", []))
-    lines.extend(["", "## Release status", f"- Synthesis review status: {synthesis.get('review_status', 'not recorded')}", "- Schema/reference checks passed. This does not certify psychometric validity or independent review.", ""])
+    lines.extend(["", "## Longitudinal change log"])
+    history = data.get("change_log", [])
+    if history:
+        for entry in history:
+            lines.append(f"- Version {entry.get('version')}: {entry.get('summary')} (changed at: {entry.get('changed_at') or 'not recorded'}; claims: {', '.join(entry.get('changed_claim_ids', [])) or 'none listed'}; triggering evidence: {', '.join(entry.get('triggering_evidence_refs', [])) or 'none listed'})")
+    else:
+        lines.append("- No previous version recorded; this is the baseline map.")
+    lines.extend(["", "## Release status", f"- Map version: {data.get('map_version', 'not recorded')}", f"- Synthesis review status: {synthesis.get('review_status', 'not recorded')}", "- Schema/reference checks passed. This does not certify psychometric validity or independent review.", ""])
     return "\n".join(lines)
 
 
