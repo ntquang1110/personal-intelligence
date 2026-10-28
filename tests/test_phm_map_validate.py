@@ -31,6 +31,16 @@ class PHMMapValidationTests(unittest.TestCase):
         data["claims"][0]["evidence_refs"].append("symbolic-source")
         self.assertTrue(any("cannot support an empirical claim" in x for x in validate_map(data)))
 
+    def test_change_log_must_reference_known_claims_and_evidence(self):
+        data = copy.deepcopy(self.data)
+        data["change_log"] = [{
+            "version": 2, "changed_at": None, "summary": "Synthetic update",
+            "changed_claim_ids": ["not-a-claim"], "triggering_evidence_refs": ["not-evidence"]
+        }]
+        errors = validate_map(data)
+        self.assertTrue(any("unknown claim" in x for x in errors))
+        self.assertTrue(any("unknown evidence" in x for x in errors))
+
     def test_schema_rejects_missing_whole_person_domain(self):
         data = copy.deepcopy(self.data)
         del data["domains"]["personality"]
