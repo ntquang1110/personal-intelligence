@@ -30,19 +30,34 @@ For each episode record: context, trigger, goal, constraints, attention, interpr
 - Check source independence and contextual variation.
 - Keep interpretive systems in a separate lane; never let them support empirical claims.
 
-## Stage 5 — Human map synthesis
-Generate:
-1. diagnostic thesis with scope and confidence;
-2. cognitive mechanism map;
-3. context-specific behavioral patterns;
-4. capability evidence map;
-5. strengths/trade-offs and failure conditions;
-6. contradictions and unknowns;
-7. development experiments;
-8. separate interpretive appendix, only if requested.
+## Stage 5 — Draft synthesis
+Generate the provisional map with mechanism-first findings, capability evidence, context-specific trade-offs, contradictions, unknowns, and measurable development experiments.
 
-## Stage 6 — Validation loop
+## Stage 6 — Adversarial review round 1
+Use `prompts/RED_TEAM_PERSONAL_HUMAN_MAP.md` to attack the draft:
+- find unsupported claims and generic statements;
+- propose plausible rival mechanisms;
+- identify missing counterexamples and source dependence;
+- test whether recommendations could fail and produce useful evidence;
+- inspect privacy, safety, and interpretive-lane violations.
+Record exact claim IDs and proposed changes.
+
+## Stage 7 — Revision
+For each critique, record `accepted`, `partially_accepted`, or `rejected_with_reason`. Remove or downgrade unsupported claims. Do not silently ignore critiques or add caveats to preserve an otherwise unsupported thesis.
+
+## Stage 8 — Adversarial review round 2
+Review the revised map for unresolved blockers and regressions. Review round 2 must focus on whether the revision fixed the original problem, not repeat the first review mechanically. A claim can remain only if its evidence and scope justify it.
+
+## Stage 9 — User-fit and release gate
+Compare the revised map against the user's stated goal and feedback. Score it with `evaluations/personal-human-map/QUALITY_RUBRIC.md`.
+- Any zero for evidence traceability, calibration, or safety means fail.
+- Total score below 16/24 means revise.
+- Passing a numeric threshold does not override a critical unsupported claim, privacy problem, or evidence-lane breach.
+- If independent review or tests were not run, disclose that fact and do not claim they passed.
+- If the gate fails, deliver a provisional map and a prioritized evidence plan rather than false certainty.
+
+## Stage 10 — Validation loop
 Each experiment states a hypothesis, context, baseline, action, measure, success threshold, duration, and review date. Use reversible experiments. After review, mark supported, not supported, or inconclusive; retain the historical claim version.
 
-## Stage 7 — Quality gate
-Do not publish a high-confidence finding if evidence is thin, dependent, stale, contradicted, or only symbolic. Do not present personality as immutable. Keep recommendations traceable to claims and measurable outcomes.
+## Quality principles
+Do not publish a high-confidence finding if evidence is thin, dependent, stale, contradicted, or only symbolic. Do not present personality as immutable. Keep recommendations traceable to claims and measurable outcomes. Distinguish independent review from self-critique.
