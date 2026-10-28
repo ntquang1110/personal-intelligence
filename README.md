@@ -36,7 +36,7 @@ It emits JSON and Markdown artifacts, checks claim/evidence references and sourc
 
 ## Whole-person map and cross-assessment synthesis
 
-The human-map contract now requires construct-level cross-assessment synthesis and a complete multi-domain map. See [cross-assessment synthesis guide](docs/CROSS_ASSESSMENT_SYNTHESIS.md), [cross-assessment schema](schemas/cross-assessment-synthesis.schema.json), and the explicitly synthetic [whole-person template](templates/phm-human-map.template.json). The synthesis records agreement and disagreement separately, tracks source lineage and context moderators, and proposes tests for competing explanations. It does not average incompatible scores or invent absent personality-test results.
+The human-map contract now requires construct-level cross-assessment synthesis, a complete multi-domain map, and an explicit version/change log for longitudinal updates. See [cross-assessment synthesis guide](docs/CROSS_ASSESSMENT_SYNTHESIS.md), [cross-assessment schema](schemas/cross-assessment-synthesis.schema.json), and the explicitly synthetic [whole-person template](templates/phm-human-map.template.json). The synthesis records agreement and disagreement separately, tracks source lineage and context moderators, and proposes tests for competing explanations. It does not average incompatible scores or invent absent personality-test results.
 
 ## Personal Human Map executable pipeline
 
