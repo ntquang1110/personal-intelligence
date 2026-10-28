@@ -23,6 +23,18 @@ class PHMRuntimeTests(unittest.TestCase):
         self.assertIn("NOT run", result["reviews"][0]["result"])
         self.assertEqual(result["release_status"], "provisional")
 
+    def test_assessment_results_accept_empty_array_and_reject_invalid_records(self):
+        data = self.sample()
+        data["assessment_results"] = []
+        self.assertEqual(phm.validate_input(data), [])
+        data["assessment_results"] = [{
+            "assessment_id": "assessment-bad", "lane": "empirical",
+            "instrument": {"name": "Big Five"},
+            "source_type": "self_report", "results": [], "limitations": []
+        }]
+        self.assertTrue(any("instrument must include name, version, and purpose" in e
+                            for e in phm.validate_input(data)))
+
     def test_unknown_evidence_reference_is_blocking(self):
         data = self.sample()
         data["claims"][0]["evidence_refs"] = ["does-not-exist"]
