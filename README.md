@@ -21,6 +21,19 @@ This project intentionally uses plain Markdown and JSON rather than platform-spe
 5. Save each run's outputs to `outputs/` if the runtime supports file writing. Use a date or session identifier in filenames when retaining multiple versions.
 6. Run `python -m unittest discover -s tests -v` to check schema contracts, required skill files, dependencies, and evidence rules.
 
+## Personal Human Map executable scaffold
+
+The PHM branch now includes a deterministic pipeline scaffold:
+
+```bash
+python scripts/phm_run.py templates/phm-run.template.json --out-dir outputs/phm-run
+python -m unittest discover -s tests -v
+```
+
+It emits JSON and Markdown artifacts, checks claim/evidence references and source lineage, flags missing counterevidence or competing mechanisms, and prevents symbolic sources from supporting empirical claims. The included template is synthetic. Read [docs/PHM_RUNTIME.md](docs/PHM_RUNTIME.md) before using it.
+
+**Important:** this is a structural pipeline, not yet an LLM-backed autonomous workflow. It does not generate semantic analysis or perform independent red-team reviews. Its output labels those limitations explicitly; a clean structural result is not a semantic release pass.
+
 ## Suggested sequence
 
 `SK00 → SK01–SK06 → SK07–SK09 → SK10–SK12 → SK13`
@@ -29,7 +42,7 @@ This is a suggested dependency flow, not a requirement to run every skill. Do no
 
 ## Directory map
 
-- `skills/`: 14 independent skill specifications.
+- `skills/`: independent skill specifications.
 - `config/`: evidence, interview, and output policies.
 - `schemas/`: JSON Schemas for shared structured records.
 - `examples/`: clearly synthetic example data and output.
@@ -66,4 +79,4 @@ Suggested file names:
 
 ## Limitations
 
-This repository provides operational prompts and validation scaffolding; it does not itself include a language model, automatic memory, external connectors, or a user database. Uploading it does not create persistent memory or write results back to GitHub. The tests check repository contracts and sample consistency; strict JSON Schema validation should also run in CI with a Draft 2020-12 validator when available.
+This repository provides operational prompts and validation scaffolding; it does not itself include a language model, automatic memory, external connectors, or a user database. The PHM CLI is a local deterministic validator/artifact generator, not an LLM. Persistence is local to the path selected by the person running it. Tests check repository contracts and sample consistency; semantic quality and longitudinal validity require separate evaluation.
