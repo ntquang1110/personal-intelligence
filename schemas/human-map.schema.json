@@ -15,11 +15,12 @@
     "domains",
     "unknowns",
     "next_actions",
-    "separation_policy"
+    "separation_policy",
+    "assessment_synthesis"
   ],
   "properties": {
     "schema_version": {
-      "const": "1.0.0"
+      "const": "1.1.0"
     },
     "map_id": {
       "type": "string",
@@ -367,6 +368,9 @@
         }
       },
       "additionalProperties": false
+    },
+    "assessment_synthesis": {
+      "$ref": "cross-assessment-synthesis.schema.json"
     }
   }
 }
