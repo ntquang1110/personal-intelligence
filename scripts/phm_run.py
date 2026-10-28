@@ -42,6 +42,45 @@ def validate_input(data: dict[str, Any]) -> list[str]:
         errors.append("evidence must be an array")
     if not isinstance(data.get("claims", []), list):
         errors.append("claims must be an array")
+    assessment_results = data.get("assessment_results", [])
+    if not isinstance(assessment_results, list):
+        errors.append("assessment_results must be an array")
+        assessment_results = []
+    valid_lanes = {"empirical", "interpretive_only", "user_meaning"}
+    valid_source_types = {"self_report", "performance_task", "observer_feedback", "work_sample", "longitudinal_outcome", "symbolic_interpretation"}
+    valid_interpretations = {"scored_per_manual", "qualitative_summary", "unscored", "interpretive_only"}
+    seen_assessments: set[str] = set()
+    for i, result in enumerate(assessment_results):
+        if not isinstance(result, dict):
+            errors.append(f"assessment_results[{i}] must be an object")
+            continue
+        aid = result.get("assessment_id")
+        if not isinstance(aid, str) or not aid.strip():
+            errors.append(f"assessment_results[{i}].assessment_id must be a non-empty string")
+        elif aid in seen_assessments:
+            errors.append(f"duplicate assessment_id: {aid}")
+        else:
+            seen_assessments.add(aid)
+        if result.get("lane") not in valid_lanes:
+            errors.append(f"assessment_results[{i}].lane is invalid")
+        instrument = result.get("instrument")
+        if not isinstance(instrument, dict) or not all(isinstance(instrument.get(k), str) and instrument[k].strip() for k in ("name", "purpose")) or "version" not in instrument:
+            errors.append(f"assessment_results[{i}].instrument must include name, version, and purpose")
+        if result.get("source_type") not in valid_source_types:
+            errors.append(f"assessment_results[{i}].source_type is invalid")
+        if not isinstance(result.get("results"), list):
+            errors.append(f"assessment_results[{i}].results must be an array")
+        else:
+            for j, finding in enumerate(result["results"]):
+                if not isinstance(finding, dict) or not isinstance(finding.get("construct"), str) or not finding.get("construct", "").strip():
+                    errors.append(f"assessment_results[{i}].results[{j}].construct is required")
+                    continue
+                if "value" not in finding:
+                    errors.append(f"assessment_results[{i}].results[{j}].value is required (use null if unknown)")
+                if finding.get("interpretation_status") not in valid_interpretations:
+                    errors.append(f"assessment_results[{i}].results[{j}].interpretation_status is invalid")
+        if not isinstance(result.get("limitations"), list):
+            errors.append(f"assessment_results[{i}].limitations must be an array")
     seen_evidence: set[str] = set()
     for i, item in enumerate(data.get("evidence", [])):
         if not isinstance(item, dict):
