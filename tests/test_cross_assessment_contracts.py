@@ -22,7 +22,8 @@ class CrossAssessmentContracts(unittest.TestCase):
     def test_whole_person_template_covers_domains_and_separate_symbolic_lane(self):
         data = self.load("templates/phm-human-map.template.json")
         for domain in ("context", "personality", "cognition", "motivation", "capabilities",
-                       "behavior", "environment_fit", "blind_spots", "development"):
+                       "behavior", "environment_fit", "blind_spots", "development", "stress_recovery",
+                       "strengths_and_costs", "contradictions"):
             self.assertIn(domain, data["domains"])
         self.assertIn("assessment_synthesis", data)
         map_schema = self.load("schemas/human-map.schema.json")
