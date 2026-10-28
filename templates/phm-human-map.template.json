@@ -107,6 +107,15 @@
     ],
     "development": [
       "Collect baseline and repeat observations before choosing an intervention."
+    ],
+    "stress_recovery": [
+      "Unknown / insufficient evidence; no clinical inference is made."
+    ],
+    "strengths_and_costs": [
+      "Unknown / insufficient evidence; distinguish observed capability from interest and hypothesis."
+    ],
+    "contradictions": [
+      "No independent assessment results available to compare; contradictions remain unassessed."
     ]
   },
   "unknowns": [
@@ -189,5 +198,7 @@
   "separation_policy": {
     "empirical_claims_exclude_interpretive_evidence": true,
     "interpretive_appendix_non_predictive": true
-  }
+  },
+  "map_version": 1,
+  "change_log": []
 }
