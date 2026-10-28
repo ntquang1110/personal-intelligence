@@ -43,9 +43,9 @@ The human-map contract now requires construct-level cross-assessment synthesis, 
 Two execution modes are available:
 
 - **Structural checks (no API):** `python scripts/phm_run.py templates/phm-run.template.json --out-dir outputs/phm-run`
-- **Model-assisted five-phase pipeline:** set `PHM_API_KEY`, `PHM_MODEL`, and optionally `PHM_API_BASE_URL`, then run `python scripts/phm_llm_run.py templates/phm-run.template.json --out-dir outputs/phm-llm-run`.
+- **Model-assisted five-phase review + structured-map pipeline:** set `PHM_API_KEY`, `PHM_MODEL`, and optionally `PHM_API_BASE_URL`, then run `python scripts/phm_llm_run.py templates/phm-run.template.json --out-dir outputs/phm-llm-run`.
 
-The model-assisted runner calls an OpenAI-compatible Chat Completions API for draft → red-team round 1 → revision → red-team round 2 → user-fit/release gate, saving each phase artifact. The included template is synthetic. See [docs/PHM_RUNTIME.md](docs/PHM_RUNTIME.md) for the input contract, configuration, privacy notes, and release limitations.
+The model-assisted runner calls an OpenAI-compatible Chat Completions API for draft → red-team round 1 → revision → red-team round 2 → user-fit/release gate, then requests a schema-conforming structured map and validates it. A valid map is written as `human-map.json` and rendered to Markdown; invalid output is retried up to three times and fails closed. The renderer includes all whole-person domains and longitudinal change history. The included template is synthetic. See [docs/PHM_RUNTIME.md](docs/PHM_RUNTIME.md) for the input contract, configuration, privacy notes, and release limitations.
 
 **Important:** model-generated review is not independent review. The pipeline remains provisional and does not provide a database, automatic memory, validated psychometric scoring, or longitudinal outcome collection. Never hardcode API keys or submit unnecessary sensitive data.
 
