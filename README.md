@@ -34,6 +34,10 @@ It emits JSON and Markdown artifacts, checks claim/evidence references and sourc
 
 **Important:** this is a structural pipeline, not yet an LLM-backed autonomous workflow. It does not generate semantic analysis or perform independent red-team reviews. Its output labels those limitations explicitly; a clean structural result is not a semantic release pass.
 
+## Whole-person map and cross-assessment synthesis
+
+The human-map contract now requires construct-level cross-assessment synthesis and a complete multi-domain map. See [cross-assessment synthesis guide](docs/CROSS_ASSESSMENT_SYNTHESIS.md), [cross-assessment schema](schemas/cross-assessment-synthesis.schema.json), and the explicitly synthetic [whole-person template](templates/phm-human-map.template.json). The synthesis records agreement and disagreement separately, tracks source lineage and context moderators, and proposes tests for competing explanations. It does not average incompatible scores or invent absent personality-test results.
+
 ## Personal Human Map executable pipeline
 
 Two execution modes are available:
