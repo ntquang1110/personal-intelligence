@@ -42,7 +42,10 @@ Top-level fields:
 - `purpose`: decision/question the map should support.
 - `evidence[]`: records with stable `id`, `text`, `source_type`; optional `source_ref`, `independence_group`, `observed_at`, and `limitations`.
 - `claims[]`: records with stable `claim_id`, `claim`, optional `claim_class`, `status`, `confidence`, `evidence_refs[]`, `counterevidence_refs[]`, and `mechanisms[]`.
+- `assessment_results[]`: optional assessment records matching `schemas/assessment-result.schema.json`; each needs a stable `assessment_id`, instrument metadata/version, lane, source type, results, and limitations. Use `interpretation_status=scored_per_manual` only when the score was produced according to the instrument's documented scoring procedure. Do not put invented or reconstructed scores here.
 - `interpretive_items[]`: optional symbolic interpretations, kept in a separate output lane and never used as empirical support.
+
+Assessment result IDs are preserved as source references in the generated map. The model is instructed to copy only supplied values and metadata; absent scores remain unknown.
 
 The included template is synthetic. Replace it with consented, evidence-backed input before using the pipeline for an actual case. Do not invent data to complete missing fields.
 
