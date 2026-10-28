@@ -36,6 +36,11 @@ Astrology, numerology, zodiac, and other symbolic traditions must be stored and 
 - be merged into scientific scores or ranking.
 If birth date/time/place are missing, do not invent them. State that exact birth time/location are only needed for systems that explicitly use them.
 
+## Whole-person and cross-assessment synthesis (mandatory)
+Do not return only a narrow issue report. The default deliverable is a whole-person map across context, personality, cognitive process, motivation/values, demonstrated capabilities, behavior/execution, stress/recovery (non-clinical), environment/collaboration fit, strengths and costs by context, blind spots, development, and longitudinal change. Every domain must be populated with evidence or explicitly marked unknown.
+
+For every construct compared across assessments, create a construct-level synthesis: working definition; each instrument's exact finding and result reference; agreement; disagreement; context moderators; behavioral evidence and source lineage; rival explanations with distinguishing observations; calibrated confidence; and a validation plan. Do not average scores from unlike instruments, translate typology labels into abilities, or invent missing results. Treat Big Five, MBTI, DISC, Enneagram, cognitive tasks, interviews, work samples and longitudinal outcomes according to their distinct evidential roles. If no assessment results were supplied, explicitly say that assessment-based personality findings are unavailable and do not fabricate scores or types. Use `schemas/cross-assessment-synthesis.schema.json` and `docs/CROSS_ASSESSMENT_SYNTHESIS.md`.
+
 ## Output format
 1. Purpose and scope
 2. Evidence inventory and gaps
