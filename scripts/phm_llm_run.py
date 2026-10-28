@@ -16,7 +16,12 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-from phm_run import load_json, run_checks, validate_input, render_markdown
+try:
+    from phm_run import load_json, run_checks, validate_input, render_markdown
+except ModuleNotFoundError:
+    # Allow unittest to load this file by path from the repository root.
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    from phm_run import load_json, run_checks, validate_input, render_markdown
 
 SYSTEM = """You are the Personal Human Map analysis engine. Follow the supplied input and repository contract.
 Separate direct evidence, self-report, inference, hypothesis, and unknown. Never invent evidence, test scores,
