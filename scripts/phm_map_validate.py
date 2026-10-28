@@ -62,7 +62,7 @@ def validate_map(data: dict[str, Any]) -> list[str]:
             for ref in claim.get(field, []) if isinstance(claim.get(field, []), list) else []:
                 if ref not in evidence_by_ref:
                     errors.append(f"claim {cid}: {field} references unknown evidence {ref!r}")
-                elif field == "evidence_refs" and evidence_by_ref[ref].get("source_type") == "interpretive_system":
+                elif field == "evidence_refs" and claim.get("claim_class") != "unknown" and evidence_by_ref[ref].get("source_type") == "interpretive_system":
                     errors.append(f"claim {cid}: symbolic/interpretive evidence {ref!r} cannot support an empirical claim")
 
     synthesis = data.get("assessment_synthesis", {})
@@ -78,6 +78,21 @@ def validate_map(data: dict[str, Any]) -> list[str]:
             aid = finding.get("assessment_id")
             if aid and aid not in evidence_by_ref:
                 errors.append(f"construct {construct.get('construct_id', '<unknown>')}: assessment_id {aid!r} missing from evidence inventory")
+            result_ref = finding.get("result_ref")
+            if result_ref and result_ref not in evidence_by_ref:
+                errors.append(f"construct {construct.get('construct_id', '<unknown>')}: result_ref {result_ref!r} missing from evidence inventory")
+            if result_ref in evidence_by_ref and finding.get("lane") == "empirical" and evidence_by_ref[result_ref].get("source_type") == "interpretive_system":
+                errors.append(f"construct {construct.get('construct_id', '<unknown>')}: interpretive source {result_ref!r} cannot support empirical assessment findings")
+
+    for entry in data.get("change_log", []):
+        if not isinstance(entry, dict):
+            continue
+        for cid in entry.get("changed_claim_ids", []):
+            if cid not in claim_ids:
+                errors.append(f"change log version {entry.get('version')}: references unknown claim {cid!r}")
+        for ref in entry.get("triggering_evidence_refs", []):
+            if ref not in evidence_by_ref:
+                errors.append(f"change log version {entry.get('version')}: references unknown evidence {ref!r}")
 
     for action in data.get("next_actions", []):
         if not isinstance(action, dict):
