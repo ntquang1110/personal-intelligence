@@ -1,0 +1,160 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://personal-intelligence.local/schemas/assessment-result.schema.json",
+  "title": "Personal Intelligence Assessment Result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "assessment_id",
+    "instrument",
+    "lane",
+    "administered_at",
+    "source_type",
+    "results",
+    "limitations"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "assessment_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "instrument": {
+      "type": "object",
+      "required": [
+        "name",
+        "version",
+        "purpose"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "purpose": {
+          "type": "string"
+        },
+        "provider": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "scoring_method": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "norm_group": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "lane": {
+      "enum": [
+        "empirical",
+        "interpretive_only",
+        "user_meaning"
+      ]
+    },
+    "administered_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "source_type": {
+      "enum": [
+        "self_report",
+        "performance_task",
+        "observer_feedback",
+        "work_sample",
+        "longitudinal_outcome",
+        "symbolic_interpretation"
+      ]
+    },
+    "consent_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "context": {
+      "type": "string"
+    },
+    "results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "construct",
+          "value",
+          "interpretation_status"
+        ],
+        "properties": {
+          "construct": {
+            "type": "string"
+          },
+          "value": {},
+          "scale": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "interpretation_status": {
+            "enum": [
+              "scored_per_manual",
+              "qualitative_summary",
+              "unscored",
+              "interpretive_only"
+            ]
+          },
+          "source_ref": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "notes": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "not_for_inference": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "review_due_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    }
+  }
+}

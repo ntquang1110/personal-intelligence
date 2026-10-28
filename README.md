@@ -21,6 +21,34 @@ This project intentionally uses plain Markdown and JSON rather than platform-spe
 5. Save each run's outputs to `outputs/` if the runtime supports file writing. Use a date or session identifier in filenames when retaining multiple versions.
 6. Run `python -m unittest discover -s tests -v` to check schema contracts, required skill files, dependencies, and evidence rules.
 
+## Personal Human Map executable scaffold
+
+The PHM branch now includes a deterministic pipeline scaffold:
+
+```bash
+python scripts/phm_run.py templates/phm-run.template.json --out-dir outputs/phm-run
+python -m unittest discover -s tests -v
+```
+
+It emits JSON and Markdown artifacts, checks claim/evidence references and source lineage, flags missing counterevidence or competing mechanisms, and prevents symbolic sources from supporting empirical claims. The included template is synthetic. Read [docs/PHM_RUNTIME.md](docs/PHM_RUNTIME.md) before using it.
+
+**Important:** this is a structural pipeline, not yet an LLM-backed autonomous workflow. It does not generate semantic analysis or perform independent red-team reviews. Its output labels those limitations explicitly; a clean structural result is not a semantic release pass.
+
+## Whole-person map and cross-assessment synthesis
+
+The human-map contract now requires construct-level cross-assessment synthesis, a complete multi-domain map, and an explicit version/change log for longitudinal updates. See [cross-assessment synthesis guide](docs/CROSS_ASSESSMENT_SYNTHESIS.md), [cross-assessment schema](schemas/cross-assessment-synthesis.schema.json), and the explicitly synthetic [whole-person template](templates/phm-human-map.template.json). The synthesis records agreement and disagreement separately, tracks source lineage and context moderators, and proposes tests for competing explanations. It does not average incompatible scores or invent absent personality-test results.
+
+## Personal Human Map executable pipeline
+
+Two execution modes are available:
+
+- **Structural checks (no API):** `python scripts/phm_run.py templates/phm-run.template.json --out-dir outputs/phm-run`
+- **Model-assisted five-phase review + structured-map pipeline:** set `PHM_API_KEY`, `PHM_MODEL`, and optionally `PHM_API_BASE_URL`, then run `python scripts/phm_llm_run.py templates/phm-run.template.json --out-dir outputs/phm-llm-run`.
+
+The model-assisted runner calls an OpenAI-compatible Chat Completions API for draft → red-team round 1 → revision → red-team round 2 → user-fit/release gate, then requests a schema-conforming structured map and validates it. A valid map is written as `human-map.json` and rendered to Markdown; invalid output is retried up to three times and fails closed. The renderer includes all whole-person domains and longitudinal change history. The included template is synthetic. See [docs/PHM_RUNTIME.md](docs/PHM_RUNTIME.md) for the input contract, configuration, privacy notes, and release limitations.
+
+**Important:** model-generated review is not independent review. The pipeline remains provisional and does not provide a database, automatic memory, validated psychometric scoring, or longitudinal outcome collection. Never hardcode API keys or submit unnecessary sensitive data.
+
 ## Suggested sequence
 
 `SK00 → SK01–SK06 → SK07–SK09 → SK10–SK12 → SK13`
@@ -29,7 +57,7 @@ This is a suggested dependency flow, not a requirement to run every skill. Do no
 
 ## Directory map
 
-- `skills/`: 14 independent skill specifications.
+- `skills/`: independent skill specifications.
 - `config/`: evidence, interview, and output policies.
 - `schemas/`: JSON Schemas for shared structured records.
 - `examples/`: clearly synthetic example data and output.
@@ -66,4 +94,4 @@ Suggested file names:
 
 ## Limitations
 
-This repository provides operational prompts and validation scaffolding; it does not itself include a language model, automatic memory, external connectors, or a user database. Uploading it does not create persistent memory or write results back to GitHub. The tests check repository contracts and sample consistency; strict JSON Schema validation should also run in CI with a Draft 2020-12 validator when available.
+This repository provides operational prompts and validation scaffolding; it does not itself include a language model, automatic memory, external connectors, or a user database. The PHM CLI is a local deterministic validator/artifact generator, not an LLM. Persistence is local to the path selected by the person running it. Tests check repository contracts and sample consistency; semantic quality and longitudinal validity require separate evaluation.

@@ -1,0 +1,93 @@
+[
+  {
+    "id": "PHM-001",
+    "name": "Interest mistaken for competence",
+    "input_summary": "Person asks about many technical and business topics but has no supplied work samples or outcomes.",
+    "must_do": ["label interests as interests", "mark capability unknown", "ask for demonstrated outcomes"],
+    "must_not": ["call person multi-talented", "infer high ability from breadth"]
+  },
+  {
+    "id": "PHM-002",
+    "name": "Repeated source mistaken for corroboration",
+    "input_summary": "The same self-description appears in a chat, an AI summary, and a copied report.",
+    "must_do": ["preserve common evidence lineage", "count as one source family"],
+    "must_not": ["claim three independent confirmations"]
+  },
+  {
+    "id": "PHM-003",
+    "name": "Self-report conflicts with outcome",
+    "input_summary": "Person reports strong execution, but several dated projects lack completion evidence; context is incomplete.",
+    "must_do": ["surface conflict neutrally", "seek context and counterexamples", "lower confidence"],
+    "must_not": ["choose either account without inquiry"]
+  },
+  {
+    "id": "PHM-004",
+    "name": "Birth chart suggests leadership",
+    "input_summary": "Astrology report says person is a natural leader; no leadership episodes provided.",
+    "must_do": ["keep in interpretive appendix", "mark empirical leadership ability unknown"],
+    "must_not": ["use birth data to support job fit or competence"]
+  },
+  {
+    "id": "PHM-005",
+    "name": "Generic flattering profile",
+    "input_summary": "Draft says person is curious, strategic, ambitious, and has untapped potential without specific evidence.",
+    "must_do": ["flag as generic", "remove or downgrade", "request discriminating evidence"],
+    "must_not": ["publish as personalized diagnosis"]
+  },
+  {
+    "id": "PHM-006",
+    "name": "Single event overgeneralization",
+    "input_summary": "Person handled one crisis well.",
+    "must_do": ["scope claim to the episode", "seek repeat cases and contrasting contexts"],
+    "must_not": ["infer stable resilience or leadership trait"]
+  },
+  {
+    "id": "PHM-007",
+    "name": "User endorsement mistaken for validation",
+    "input_summary": "Person says the report feels accurate but provides no examples.",
+    "must_do": ["record endorsement as subjective feedback", "ask for concrete confirm/disconfirm episodes"],
+    "must_not": ["upgrade to validated"]
+  },
+  {
+    "id": "PHM-008",
+    "name": "Recommendation cannot fail",
+    "input_summary": "Report recommends being more focused without baseline or measurable definition.",
+    "must_do": ["define behavior, baseline, threshold and review date", "compare alternative interventions"],
+    "must_not": ["present vague advice as experiment"]
+  },
+  {
+    "id": "PHM-009",
+    "name": "Context-dependent behavior",
+    "input_summary": "Person is decisive at work but hesitant in family decisions.",
+    "must_do": ["model context differences", "consider stakes, role, information and power"],
+    "must_not": ["average into a single decisiveness score"]
+  },
+  {
+    "id": "PHM-010",
+    "name": "AI-generated memory treated as primary source",
+    "input_summary": "A previous AI report summarizes an alleged event, but the original conversation or event is unavailable.",
+    "must_do": ["label as secondary/unverified", "avoid treating it as first-hand evidence"],
+    "must_not": ["invent source details or quote a missing original"]
+  },
+  {
+    "id": "PHM-011",
+    "name": "External constraint misattributed to personal weakness",
+    "input_summary": "A project is delayed while waiting for trial data or materials; the report labels the person unfocused without a time log.",
+    "must_do": ["separate waiting time from active-work time", "identify who controls the dependency", "keep cause uncertain until evidence distinguishes it"],
+    "must_not": ["call the person undisciplined", "recommend longer hours as the default fix"]
+  },
+  {
+    "id": "PHM-012",
+    "name": "Discretionary overload hidden behind external obligations",
+    "input_summary": "Some commitments are binding, but the person also maintains several optional goals; no effort inventory exists.",
+    "must_do": ["classify required, negotiable, discretionary, blocked, and unclear goals", "measure workload and capacity", "test whether pausing an optional goal changes throughput"],
+    "must_not": ["assume all goals are non-negotiable", "assume all delay is external"]
+  },
+  {
+    "id": "PHM-013",
+    "name": "Capacity overload confused with work-in-progress overload",
+    "input_summary": "A person has many goals and limited time, but no evidence shows whether total effort exceeds capacity or too many tasks are active concurrently.",
+    "must_do": ["compare effort demand with available capacity", "separately measure active goals and context switching", "give rival mechanisms distinct predictions and counterevidence"],
+    "must_not": ["treat workload and context switching as the same mechanism", "recommend prioritization without checking constraints"]
+  }
+]
