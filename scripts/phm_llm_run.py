@@ -19,11 +19,11 @@ from typing import Any
 try:
     from phm_run import load_json, run_checks, validate_input, render_markdown
     from phm_map_validate import validate_map, schema_with_local_refs, render_markdown as render_human_map
-    from phm_map_validate import validate_map, schema_with_local_refs, render_markdown as render_human_map
 except ModuleNotFoundError:
     # Allow unittest to load this file by path from the repository root.
     sys.path.insert(0, str(Path(__file__).resolve().parent))
     from phm_run import load_json, run_checks, validate_input, render_markdown
+    from phm_map_validate import validate_map, schema_with_local_refs, render_markdown as render_human_map
 
 SYSTEM = """You are the Personal Human Map analysis engine. Follow the supplied input and repository contract.
 Separate direct evidence, self-report, inference, hypothesis, and unknown. Never invent evidence, test scores,
@@ -113,6 +113,12 @@ def generate_validated_map(data: dict[str, Any], narrative: str, base_url: str,
         try:
             mapped = parse_json_object(raw)
             errors = validate_map(mapped)
+            allowed_refs = {str(e.get("id")) for e in data.get("evidence", []) if isinstance(e, dict) and e.get("id")}
+            mapped_refs = {str(e.get("source_ref")) for e in mapped.get("evidence_inventory", []) if isinstance(e, dict)}
+            for ref in sorted(mapped_refs - allowed_refs):
+                errors.append(f"map evidence source_ref {ref!r} is not present in the input evidence packet")
+            if not mapped_refs and allowed_refs:
+                errors.append("map evidence inventory omitted all input evidence references")
         except (ValueError, json.JSONDecodeError) as exc:
             errors = [str(exc)]
         if not errors:
