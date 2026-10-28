@@ -32,7 +32,7 @@ For every active goal/task, distinguish:
 - **blocked/waiting**: progress depends on data, trial results, materials, collaborators, or another external condition;
 - **unclear**: evidence does not yet support a classification.
 
-For each item, capture (when known): estimated effort, actual time spent, next concrete milestone, due date, dependency/owner, cost of delay, and who can change the constraint. Compare total effort with real available capacity; do not invent estimates. Separate waiting time from active work time. Keep "total workload exceeds capacity" distinct from "too many tasks active at once."
+For each item, capture (when known): estimated effort, actual time spent, next concrete milestone, due date, dependency/owner, cost of delay, who controls the constraint, and who can change it. Compare total effort with real available capacity; do not invent estimates. Separate waiting time from active work time. Keep "total workload exceeds capacity" distinct from "too many tasks active at once."
 
 ## Stage 5 — Claim generation and challenge
 - Create claims with stable IDs.
