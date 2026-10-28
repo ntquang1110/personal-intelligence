@@ -71,6 +71,19 @@ class PHMLLMRunnerTests(unittest.TestCase):
         self.assertEqual(result["structured_map"]["attempts"], 3)
         self.assertTrue(result["structured_map"]["errors"])
 
+    def test_generated_map_cannot_introduce_evidence_not_in_input(self):
+        sample = self.sample()
+        invalid_map = self.valid_map_for_sample()
+        invalid_map["evidence_inventory"][0]["source_ref"] = "invented-evidence-id"
+
+        with patch.object(runner, "chat_completion", return_value=json.dumps(invalid_map)):
+            result = runner.generate_validated_map(
+                sample, "mock narrative", "https://example.invalid/v1", "test-key", "test-model"
+            )
+        self.assertFalse(result["valid"])
+        self.assertEqual(result["attempts"], 3)
+        self.assertTrue(any("not present in the input evidence packet" in e for e in result["errors"]))
+
     def test_phase_context_includes_prior_outputs(self):
         seen = []
         valid_map = self.valid_map_for_sample()
