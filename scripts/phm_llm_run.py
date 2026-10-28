@@ -98,6 +98,7 @@ def generate_validated_map(data: dict[str, Any], narrative: str, base_url: str,
             "Return exactly one JSON object for a complete Personal Human Map. Do not wrap it in Markdown.\n"
             "It must conform to the supplied JSON Schema. Preserve the schema's required fields and enums.\n"
             "Use only evidence in the input packet; use exact evidence IDs as evidence_inventory.source_ref and claim refs.\n"
+            "For each supplied assessment_results item, preserve assessment_id as its stable source reference, retain instrument/version/scoring provenance and limitations, and cite actual result values exactly. Map symbolic_interpretation sources to interpretive_system and interpretive_only lane.\n"
             "Do not invent personality test results, scores, dates, observations, or independent reviewers.\n"
             "If there are no real assessment results, assessment_findings must be empty or explicitly state that no scored result was supplied; do not infer Big Five/MBTI/DISC/Enneagram types.\n"
             "Cover every required domain; say unknown/insufficient evidence where needed. Keep symbolic systems in interpretive_only lane and never use them to support empirical claims.\n"
@@ -114,6 +115,7 @@ def generate_validated_map(data: dict[str, Any], narrative: str, base_url: str,
             mapped = parse_json_object(raw)
             errors = validate_map(mapped)
             allowed_refs = {str(e.get("id")) for e in data.get("evidence", []) if isinstance(e, dict) and e.get("id")}
+            allowed_refs.update(str(a.get("assessment_id")) for a in data.get("assessment_results", []) if isinstance(a, dict) and a.get("assessment_id"))
             mapped_refs = {str(e.get("source_ref")) for e in mapped.get("evidence_inventory", []) if isinstance(e, dict)}
             for ref in sorted(mapped_refs - allowed_refs):
                 errors.append(f"map evidence source_ref {ref!r} is not present in the input evidence packet")
