@@ -8,6 +8,7 @@ Build an evolving, evidence-linked model of a person that explains how they thin
 - No diagnosis of mental-health conditions.
 - No inference of competence, destiny, intelligence, or suitability from date of birth, astrology, numerology, or typology alone.
 - No unsupported composite score that hides disagreement or missing evidence.
+- No default attribution of workload problems to personal weakness when constraints, dependencies, or capacity may explain them.
 
 ## Evidence lanes
 1. **Empirical lane**: interviews, structured assessments, cognitive/decision tasks, behavioral episodes, work samples, longitudinal outcomes, and authorized observer feedback.
@@ -25,6 +26,7 @@ Build an evolving, evidence-linked model of a person that explains how they thin
 - Environment fit and collaboration
 - Blind spots, contradictions, and rival explanations
 - Development hypotheses and experiments
+- Workload architecture: constraints, dependencies, available capacity, active goals, discretionary commitments, and context-switching costs
 
 ## Claim lifecycle
 Each meaningful claim has a stable ID, evidence references, evidence independence, counterevidence, alternative explanations, scope conditions, confidence rationale, falsification/validation test, and review status. Statuses are not interchangeable:
@@ -41,6 +43,16 @@ Evidence labels describe the source, not truth: self-report, observed behavior, 
 Prefer the chain:
 **trigger/context → attention and interpretation → reasoning/decision strategy → action → outcome → learning/update**.
 Do not infer an internal mechanism from an outcome alone. Record competing mechanisms when the same behavior has multiple plausible causes.
+
+For workload and execution questions, explicitly distinguish:
+- total workload exceeds available capacity;
+- too many goals/tasks are active concurrently (work-in-progress overload);
+- external constraints or dependencies consume/fragment available time;
+- discretionary goals remain active by choice;
+- context switching reduces usable deep-work time;
+- decision uncertainty delays action.
+
+These explanations may coexist. For each, record predicted observations, disconfirming evidence, and a test that can distinguish it from alternatives. Do not use "poor time management", "overcommitted", "perfectionistic", or similar labels as substitutes for a demonstrated mechanism.
 
 ## Capability rules
 Distinguish:
