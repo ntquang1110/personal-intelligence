@@ -34,6 +34,17 @@ It emits JSON and Markdown artifacts, checks claim/evidence references and sourc
 
 **Important:** this is a structural pipeline, not yet an LLM-backed autonomous workflow. It does not generate semantic analysis or perform independent red-team reviews. Its output labels those limitations explicitly; a clean structural result is not a semantic release pass.
 
+## Personal Human Map executable pipeline
+
+Two execution modes are available:
+
+- **Structural checks (no API):** `python scripts/phm_run.py templates/phm-run.template.json --out-dir outputs/phm-run`
+- **Model-assisted five-phase pipeline:** set `PHM_API_KEY`, `PHM_MODEL`, and optionally `PHM_API_BASE_URL`, then run `python scripts/phm_llm_run.py templates/phm-run.template.json --out-dir outputs/phm-llm-run`.
+
+The model-assisted runner calls an OpenAI-compatible Chat Completions API for draft → red-team round 1 → revision → red-team round 2 → user-fit/release gate, saving each phase artifact. The included template is synthetic. See [docs/PHM_RUNTIME.md](docs/PHM_RUNTIME.md) for the input contract, configuration, privacy notes, and release limitations.
+
+**Important:** model-generated review is not independent review. The pipeline remains provisional and does not provide a database, automatic memory, validated psychometric scoring, or longitudinal outcome collection. Never hardcode API keys or submit unnecessary sensitive data.
+
 ## Suggested sequence
 
 `SK00 → SK01–SK06 → SK07–SK09 → SK10–SK12 → SK13`
